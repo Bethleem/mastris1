@@ -17,4 +17,11 @@
      Yo pispo
   </author>
 
+     <platform name="android">
+              <icon src="ldpi.png" density="ldpi" />
+
+     </platform>
+
+    
+    
 </widget>
