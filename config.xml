@@ -17,10 +17,12 @@
      Yo pispo
   </author>
 
-     <platform name="android">
-              <icon src="ldpi.png" density="ldpi" />
-
-     </platform>
+    
+ <preference name="permissions" value="none"/>
+     
+ <platform name="android">
+    <icon src="ldpi.png" density="ldpi" />
+ </platform>
 
     
     
