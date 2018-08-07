@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<!--
+
+Created with Squiffy 5.1.2
+
+
+https://github.com/textadventures/squiffy
+
+-->
+	<head>
+		<title></title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script src="jquery.min.js"></script>
+		<script src="story.js" charset="UTF-8"></script>
+
+    <script>
+
+        var fontSize = 1;
+
+	var noche = 0;
+
+	var desplegado = 0;
+
+        var desplegado2 = 0;
+
+        // funcion para aumentar la fuente
+        function zoomIn() {
+            fontSize += 0.1;
+            document.body.style.fontSize = fontSize + "em";
+        }
+
+ 
+        // funcion para disminuir la fuente
+        function zoomOut() {
+            fontSize -= 0.1;
+            document.body.style.fontSize = fontSize + "em";
+        }
+
+        // funcion para oscurecer la pantalla
+        function Noctur() {
+		if (noche < 1) {
+	            document.body.style.backgroundColor="black";
+ 	      	    document.body.style.color="white";
+		    document.getElementById("menuses").style.backgroundColor="black";
+		    document.getElementById("rayas").style.fill="white";
+		    document.getElementById("perfil").style.fill="white";
+ 		    document.getElementById("cierra1").style.fill="white";
+ 		    document.getElementById("cierra2").style.fill="white";
+		    document.getElementById("relleno").style.backgroundColor="black";
+		    noche=1;
+		}else{
+	            document.body.style.backgroundColor="white";
+        	    document.body.style.color="black";
+		    document.getElementById("menuses").style.backgroundColor="white";
+		    document.getElementById("rayas").style.fill="black";
+		    document.getElementById("perfil").style.fill="black";
+ 		    document.getElementById("cierra1").style.fill="black";
+ 		    document.getElementById("cierra2").style.fill="black";
+		    document.getElementById("relleno").style.backgroundColor="white";
+		    noche=0;		
+		}
+        }
+
+        // funcion para desplegar menu de la derecha
+        function despliega() {
+
+
+		//primero comprobamos si está desplegado el otro menú y si es así, lo mandamos cerrar
+		if (desplegado2==1) {despliega2();}
+
+		if (desplegado<1){ //si está cerrado
+			//activamos la "x" de cierre
+			document.getElementById("cierra1").style.display = "inline";
+			//desactivamos el icono de las tres rayas
+			document.getElementById("rayas").style.display = "none";
+			//y desplegamos el menú
+        		document.getElementById("menuses").style.display = "inline";
+			desplegado=1;
+		}else{ //si ya estaba abierto
+			//eliminamos la "x" de cierre
+			document.getElementById("cierra1").style.display = "none";
+			//reactivamos el icono de las tres rayas
+			document.getElementById("rayas").style.display = "inline";
+			//y escondemos el menú
+			document.getElementById("menuses").style.display = "none";
+			desplegado=0;
+		}
+        }
+
+
+        // funcion para desplegar menu de la izquierda
+        function despliega2() {
+
+		//primero comprobamos si está desplegado el otro menú y si es así, lo cerramos
+		if (desplegado==1) {despliega();}
+
+		if (desplegado2<1){
+			document.getElementById("cierra2").style.display = "inline";
+			document.getElementById("perfil").style.display = "none";
+        		document.getElementById("menuses2").style.display = "inline";
+			desplegado2=1;
+		}else{
+			document.getElementById("cierra2").style.display = "none";
+			document.getElementById("perfil").style.display = "inline";
+			document.getElementById("menuses2").style.display = "none";
+			desplegado2=0;
+		}
+        }
+
+	//función que cambia el color de los links según modo nocturno on y off
+	function anochece(){
+	var elements = document.getElementsByTagName('a');
+
+	for (var i = 0; i < elements.length; i++) {
+	    
+	        if (noche < 1 ){
+			elements[i].style.color = 'blue';
+		}else{
+			elements[i].style.color = 'yellow';
+		}
+	    
+	}
+
+	}
+
+    </script>
+
+		
+		<script>
+			jQuery(function($){
+				$('#squiffy').squiffy();
+				var restart = function () {
+					$('#squiffy').squiffy('restart');
+				};
+				$('#restart').click(restart);
+				$('#restart').keypress(function (e) {
+					if (e.which !== 13) return;
+					restart();
+				});
+			});
+		</script>
+		<link rel="stylesheet" href="style.css"/>
+	</head>
+	<body onclick="anochece()">
+
+
+		
+	
+					<div id="relleno" style=" width:100%;  position: fixed; top: 0px;  left:0px; background-color: white;">&nbsp;
+				
+					
+						
+<svg style="position: fixed; top: 10px;  left:10px;" id="perfil" fill="black" onclick="despliega2()" height="1.2em" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<g><path d="M957.2,990H896c-11.8-155.1-112.4-285.1-250.8-339.7c-44,21.2-93.1,33.4-145.2,33.4c-52.1,0-101.2-12.2-145.2-33.4C216.4,704.9,115.8,834.9,104,990H42.8c10.9-165.6,109.5-307,249.6-378.5c-78.1-61.7-128.5-157.2-128.5-264.6C163.9,160.8,314.4,10,500,10c185.6,0,336.1,150.8,336.1,336.9c0,107.4-50.3,202.9-128.5,264.6C847.7,683,946.3,824.4,957.2,990z M775,346.9c0-152.2-123.1-275.6-275-275.6c-151.9,0-275,123.4-275,275.6c0,152.2,123.1,275.6,275,275.6C651.9,622.5,775,499.1,775,346.9z"/></g>
+</svg><svg id="cierra2" style="display:none; position: fixed; top: 10px;  left:10px;" fill="black" onclick="despliega2()" height="1.2em" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg> <div style="text-align:center">Servicios Logísticos globales<br><hr></div>
+							
+<svg style="position: fixed; top: 10px;  right:10px;" id="rayas" fill="black" onclick="despliega()" height="1.2em" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg><svg id="cierra1" style="display:none; position: fixed; top: 10px;  right:10px;" fill="black" onclick="despliega()" height="1.2em" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg>
+						<div id="menuses" style="display:none; background-color: white;">
+							<div style="width:100%; text-align: right; float: none;"></br></div>
+							<div style="display: block; text-align: right;"><button onclick="zoomIn()" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Aumentar tamaño de fuente</button></div>
+							<div style="display: block; text-align: right;"><button onclick="zoomOut()" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Disminuir tamaño de fuente</button></div>						
+							<div style="display: block; text-align: right;"><button onclick="Noctur()" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Modo nocturno ON/OFF</button></div>						
+							<div style="display: block; text-align: right;"><hr></div>		
+							<div style="display: block; text-align: right;"><button id="restart" tabindex="0" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Reiniciar historia</button></div>						
+							<div style="display: block; text-align: left;"><hr></div>
+						</div>
+						<div id="menuses2" style="display:none; background-color: white;">
+							<div style="width:100%; text-align: right; float: none;"></br></div>
+							<div style="display: block; text-align: left;"><button onclick="zoomIn()" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Aumentar tamaño de fuente</button></div>
+							<div style="display: block; text-align: left;"><button onclick="zoomOut()" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Disminuir tamaño de fuente</button></div>						
+							<div style="display: block; text-align: left;"><button onclick="Noctur()" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Modo nocturno ON/OFF</button></div>						
+							<div style="display: block; text-align: left;"><hr></div>		
+							<div style="display: block; text-align: left;"><button id="restart" tabindex="0" style="text-align: center; min-width: 250px; border: 2px solid grey; padding:7px; margin: 10px; font-size: 15px;">Reiniciar historia</button></div>						
+							<div style="display: block; text-align: left;"><hr></div>
+						</div>
+					</div>
+
+		<div id="squiffy-container">
+
+
+			<div id="squiffy-header">
+				<div style=" height:4em;"></div>
+			</div>
+
+			<div id="squiffy">
+			
+			</div>
+			
+			</br></br>
+			
+		</div>
+	</body>
+</html>
