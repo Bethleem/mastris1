@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<!--
+
+Created with Squiffy 5.0.0
+
+
+https://github.com/textadventures/squiffy
+
+-->
+	<head>
+		<title>Bienvenido a MATRIS</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script src="jquery.min.js"></script>
+		<script src="story.js" charset="charset=ISO-8859-1"></script>
+		
+		<script>
+			jQuery(function($){
+				$('#squiffy').squiffy();
+				var restart = function () {
+					$('#squiffy').squiffy('restart');
+				};
+				$('#restart').click(restart);
+				$('#restart').keypress(function (e) {
+					if (e.which !== 13) return;
+					restart();
+				});
+			});
+		</script>
+		<link rel="stylesheet" href="style.css"/>
+	</head>
+	<body>
+		<div id="squiffy-container">
+			<div id="squiffy">
+			</div>
+			<span id="final"></span>
+		</div>
+	</body>
+
+<script>
+
+	sq_id=document.getElementById("squiffy");
+	sq_final=document.getElementById("final");
+
+
+	window.resetea=function(){
+		$('#squiffy').squiffy('restart');
+	}
+
+	window.pabajo=function(){
+		sq_final.scrollIntoView();
+	}
+
+
+	window.tipograf=function(sqtipo){
+
+		if(sqtipo==1){sq_id.style.fontFamily="sans-serif";}
+		if(sqtipo==2){sq_id.style.fontFamily="serif";}
+		if(sqtipo==3){sq_id.style.fontFamily="monospace";}
+	}
+
+	window.sqZoom=function(fontSize){
+
+		sq_id.style.fontSize = fontSize + "em";
+
+	}
+
+	window.sqNoche=function(){
+
+
+		sq_id.style.background = "black";
+		sq_id.style.color = "rgb(240,245,244)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";      //para el link normal
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid";  //para la caja del link-caja
+		document.styleSheets[0].cssRules[8].style.color="yellow";             //para el texto del link-caja
+		//localStorage.setItem("fi_tamletra", fontSize);
+		
+
+
+	}
+
+	window.sqjusti=function(justi){
+
+		if (justi==1){
+			document.styleSheets[0].cssRules[6].style.textAlign="justify";
+		}else {
+			document.styleSheets[0].cssRules[6].style.textAlign="left";
+		}
+
+	}
+
+	window.cambiamarg=function(marg){
+
+
+		switch(marg){
+
+		case 0:
+		document.styleSheets[0].cssRules[4].style.maxWidth="100vw";
+		break;
+
+		case 1:
+		document.styleSheets[0].cssRules[4].style.maxWidth="90vw";
+		break;
+
+		case 2:
+		document.styleSheets[0].cssRules[4].style.maxWidth="80vw";
+		break;
+
+		case 3:
+		document.styleSheets[0].cssRules[4].style.maxWidth="70vw";
+		break;
+
+		case 4:
+		document.styleSheets[0].cssRules[4].style.maxWidth="60vw";
+		break;
+
+		case 5:
+		document.styleSheets[0].cssRules[4].style.maxWidth="50vw";
+		break;
+
+		}
+
+
+	}
+
+	window.sqtema=function(temai){
+
+		switch(temai){
+
+		case 1:
+		sq_id.style.background = "rgb(240,245,244)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="blue";             //esto cambia el color de un link normal
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid";  //esto cambia el color de la caja del link tipo caja (clase "nueva")
+		document.styleSheets[0].cssRules[8].style.color="blue";             //esto cambia el color del texto del link tipo caja (clase "nueva")
+		break;
+
+		case 2:
+		sq_id.style.background = "white";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 3:
+		sq_id.style.background = "rgb(213,183,139)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 4:
+		sq_id.style.background = "rgb(213,183,139)";
+		sq_id.style.color = "white";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 5:
+		sq_id.style.background = "rgb(117,62,93)";
+		sq_id.style.color = "rgb(248,249,251)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 
+		break;
+
+		case 6:
+		sq_id.style.background = "rgb(137,48,138)";
+		sq_id.style.color = "rgb(243,242,238)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 
+		break;
+
+		case 7:
+		sq_id.style.background = "rgb(136,104,153)";
+		sq_id.style.color = "rgb(248,242,216)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";		
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 
+		break;
+
+		case 8:
+		sq_id.style.background = "rgb(54,73,80)";
+		sq_id.style.color = "rgb(255,161,48)";
+		document.styleSheets[0].cssRules[1].style.color="white";
+		document.styleSheets[0].cssRules[8].style.border="3px white solid"; 
+		document.styleSheets[0].cssRules[8].style.color="white"; 
+		break;
+
+		case 9:
+		sq_id.style.background = "rgb(107,154,170)";
+		sq_id.style.color = "rgb(227,248,127)";
+		document.styleSheets[0].cssRules[1].style.color="white";
+		document.styleSheets[0].cssRules[8].style.border="3px white solid"; 
+		document.styleSheets[0].cssRules[8].style.color="white"; 
+		break;
+
+		case 10:
+		sq_id.style.background = "rgb(139,252,248)";
+		sq_id.style.color = "rgb(85,35,60)";
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 
+		break;
+
+		case 11:
+		sq_id.style.background = "rgb(228,232,241)";
+		sq_id.style.color = "rgb(156,83,164)";
+		document.styleSheets[0].cssRules[1].style.color="green";
+		document.styleSheets[0].cssRules[8].style.border="3px green solid"; 
+		document.styleSheets[0].cssRules[8].style.color="green"; 
+		break;
+
+		case 12:
+		sq_id.style.background = "rgb(225,218,226)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 
+		break;
+
+		case 13:
+		sq_id.style.background = "rgb(205,207,194)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 
+		break;
+
+		case 14:
+		sq_id.style.background = "rgb(220,206,179)";
+		sq_id.style.color = "rgb(63,84,75)";
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 
+		break;
+
+		case 15:
+		sq_id.style.background = "rgb(244,240,213)";
+		sq_id.style.color = "rgb(250,137,15)";
+		document.styleSheets[0].cssRules[1].style.color="black";
+		document.styleSheets[0].cssRules[8].style.border="3px black solid"; 
+		document.styleSheets[0].cssRules[8].style.color="black"; 
+		break;
+
+		case 16:
+		sq_id.style.background = "rgb(88,59,51)";
+		sq_id.style.color = "rgb(252,254,233)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 
+		break;
+
+		case 17:
+		sq_id.style.background = "rgb(216,117,78)";
+		sq_id.style.color = "rgb(205,211,209)";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 18:
+		sq_id.style.background = "rgb(216,117,78)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 19:
+		sq_id.style.background = "rgb(216,117,78)";
+		sq_id.style.color = "white";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 20:
+		sq_id.style.background = "rgb(255,153,43)";
+		sq_id.style.color = "rgb(30,58,79)";
+		document.styleSheets[0].cssRules[1].style.color="white";
+		document.styleSheets[0].cssRules[8].style.border="3px white solid"; 
+		document.styleSheets[0].cssRules[8].style.color="white"; 
+		break;
+
+		case 21:
+		sq_id.style.background = "rgb(242,214,45)";
+		sq_id.style.color = "rgb(22,61,68)";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 22:
+		sq_id.style.background = "rgb(232,252,129)";
+		sq_id.style.color = "rgb(53,72,78)";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 23:
+		sq_id.style.background = "rgb(118,254,188)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 24:
+		sq_id.style.background = "rgb(113,195,159)";
+		sq_id.style.color = "black";
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 
+		break;
+
+		case 25:
+		sq_id.style.background = "rgb(47,77,69)";
+		sq_id.style.color = "rgb(229,238,243)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 
+		break;
+
+		case 26:
+		sq_id.style.background = "black";
+		sq_id.style.color = "rgb(66,201,32)";
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 
+		break;
+
+		}
+
+
+	}
+
+</script>
+
+</html>
