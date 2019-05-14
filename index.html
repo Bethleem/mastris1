@@ -1,0 +1,994 @@
+<HTML>
+
+<HEAD>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, user-scalable=no">
+	<title>Bienvenido a MATRIS</title>
+	<script src="jquery.min.js"></script>
+	<script src="story.js" charset="charset=ISO-8859-1"></script>
+		<script>
+			jQuery(function($){
+				$('#squiffy').squiffy();
+				var restart = function () {
+					$('#squiffy').squiffy('restart');
+				};
+				$('#restart').click(restart);
+				$('#restart').keypress(function (e) {
+					if (e.which !== 13) return;
+					restart();
+				});
+			});
+		</script>
+		<link rel="stylesheet" href="style.css"/>
+
+</HEAD>
+
+<BODY id="cuerpo" style="background:white; margin:0 0 0 0; overflow-x:hidden; overflow-y:hidden; font-size:1.2em; font-family: Arial, Helvetica, sans-serif;" onload="arranca()">
+	<div id="cabecera" style="border-bottom: 3px solid grey;  top:0; left:0; font-size:1.2em; padding: 5 5 5 5; background:rgb(235,235,235);">
+		<div onclick="activa(1)" style="display:inline-block;  width: 9%; padding-left:1%; padding-top:12px;"><svg id="izda" fill="black" height="0.7em" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<g><path d="M957.2,990H896c-11.8-155.1-112.4-285.1-250.8-339.7c-44,21.2-93.1,33.4-145.2,33.4c-52.1,0-101.2-12.2-145.2-33.4C216.4,704.9,115.8,834.9,104,990H42.8c10.9-165.6,109.5-307,249.6-378.5c-78.1-61.7-128.5-157.2-128.5-264.6C163.9,160.8,314.4,10,500,10c185.6,0,336.1,150.8,336.1,336.9c0,107.4-50.3,202.9-128.5,264.6C847.7,683,946.3,824.4,957.2,990z M775,346.9c0-152.2-123.1-275.6-275-275.6c-151.9,0-275,123.4-275,275.6c0,152.2,123.1,275.6,275,275.6C651.9,622.5,775,499.1,775,346.9z"/></g>
+</svg></div><div id="titulo" style="display: inline-block;  width: 80%; text-align: center; padding-bottom:10px;">Bienvenido a Matris</div><div onclick="activa(3)" ontouchstart="activa(3)" style="display: inline-block;  width: 9%; padding-right:1%; padding-top:10px; text-align: right;"><svg  id="dcha" fill="black"  height="0.7em"  style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg></div>
+	</div>
+	
+
+	<div id="uno" style="display:none; overflow: auto; height:100%; padding: 5 5 5 5;">
+		<div style="margin-bottom: 5vh; text-align: left;"><svg  id="equis1" onclick="cierra()" fill="black"  height="1.5em" style="margin:1vh 1vw 1vh 1vw;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg><br><br></div>
+
+		<div style="border-bottom: 2px solid grey; border-top: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="activa(5)" >Reiniciar historia</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="activa(4)" >Acerca de</div></div>
+
+	</div>
+
+	<div id="dos" style="display:block; overflow: auto; height:100%; border-bottom: padding: 5 5 5 5;">
+		<div id="squiffy-container">
+			<div id="squiffy">
+			</div>
+			<span id="final"></span>
+		</div>
+	</div>
+
+	<div id="tres" style="display:none; overflow: auto; height:100%; padding: 5 5 5 5;">
+		<div style="margin-bottom: 5vh; text-align: left;"><svg  id="equis3" onclick="cierra()"  style="margin:1vh 1vw 1vh 1vw;" fill="black"  height="1.5em"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg></div>
+		<div style="border-bottom: 2px solid grey; border-top: 2px solid grey; width:66%;"><div id="noche_div" style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="nocturno()" >Activar modo nocturno</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div id="tipos" style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tipograf()" >Tipografía: San serif</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="zoomIn()" >Aumentar tamaño fuente</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="zoomOut()" >Disminuir tamaño fuente</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div id="id_justi" style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="justifica()" >Desactivar justificado</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div id="id_margen" style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="margen()" >Margen: 15%</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="activa(6)" >Colores</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div id="octit" style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="ocultit()" >Ocultar título</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="defecto()" >Valores por defecto</div></div>
+	</div>
+
+	<div id="cuatro" style="display:none; overflow: auto; height:100%; padding: 5 5 5 5;">
+		<div style="margin-bottom: 5vh; text-align: left;"><svg  id="equis4" onclick="cierra()"  style="margin:1vh 1vw 1vh 1vw;" fill="black"  height="1.5em"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg></div>
+		<div style="display: block; text-align: left; padding-left:3vw;"><br>&copy; 2018 J. A. Menéndez<br><br>Una historia de Servicios Logísticos Globales.<br><br>Más información en: <br><a href="http://www.jamenendez.blogspot.com">Mi bloj</a><br></div><p style="margin:5vw; text-align: justify;">Queda prohibida, salvo excepción prevista en la ley, cualquier forma de reproducción, distribución, comunicación pública o transformación de esta obra sin previa autorización por escrito del titular de la propiedad intelectual. La infracción de los derechos mencionados puede ser constitutiva de delito contra la propiedad intelectual (artículo 270 y siguientes del Código Penal).</p>
+	</div>
+
+	<div id="cinco" style="display:none; overflow: auto; height:100%; padding: 5 5 5 5;">
+		<div style="margin-bottom: 5vh; text-align: left;"><svg  id="equis5" onclick="cierra()"  style="margin:1vh 1vw 1vh 1vw;" fill="black"  height="1.5em"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw; color:red; font-weight: bold; font-size:1.5em;">SE PERDERAN TODOS LOS PROGRESOS DE LA HISTORIA<br><br></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw; color:red;" onclick="amonos()" >Continuar</div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="cierra()" >Cancelar</div></div>
+	</div>
+
+	<div id="seis" style="display:none; overflow: auto; height:100%; padding: 5 5 5 5;">
+		<div style="margin-bottom: 5vh; text-align: left;"><svg  id="equis6" onclick="cierra()"  style="margin:1vh 1vw 1vh 1vw;" fill="black"  height="1.5em"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path d="M981.1,797.3C981.1,797.3,981.1,797.3,981.1,797.3L683.8,500l297.3-297.3c0,0,0,0,0,0c3.2-3.2,5.5-6.9,7-10.9c4.1-10.9,1.7-23.6-7-32.4L840.6,18.9c-8.8-8.7-21.5-11.1-32.4-7c-4,1.5-7.7,3.8-10.9,7c0,0,0,0,0,0L500,316.3L202.7,19c0,0,0,0,0,0c-3.2-3.2-6.9-5.5-10.9-7c-10.9-4.1-23.6-1.7-32.4,7L19,159.4c-8.8,8.7-11.1,21.5-7,32.4c1.5,4,3.8,7.7,7,10.9c0,0,0,0,0,0L316.2,500L18.9,797.3c0,0,0,0,0,0c-3.2,3.2-5.5,6.9-7,10.9c-4.1,10.9-1.7,23.6,7,32.4l140.4,140.4c8.8,8.7,21.5,11.1,32.4,7c4-1.5,7.7-3.8,10.9-7c0,0,0,0,0,0L500,683.8l297.3,297.3c0,0,0,0,0,0c3.2,3.2,6.9,5.5,10.9,7c10.9,4.1,23.6,1.7,32.4-7L981,840.6c8.8-8.8,11.1-21.5,7-32.4C986.6,804.3,984.3,800.5,981.1,797.3L981.1,797.3z"/></g>
+</svg></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;">Los cambios no afectan al modo nocturno.<br><br></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(1)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(240,245,244);">Por defecto</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(2)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:white;">Blanco nuclear</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(26)"><div style="padding: 1vh 0 1vh 2vw; color:green; background:black;">Matrix</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(3)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(213,183,139);">Papel envejecido 1</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(4)"><div style="padding: 1vh 0 1vh 2vw; color:white; background:rgb(213,183,139);">Papel envejecido 2</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(5)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(248,249,251); background:rgb(117,62,93);">Pastel de arándanos</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(6)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(243,242,238); background:rgb(137,48,138);">Violeta imperial</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(7)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(248,242,216); background:rgb(136,104,153);">Violeta desleido</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(8)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(255,161,48); background:rgb(54,73,80);">Océano ártico</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(9)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(227,248,127); background:rgb(107,154,170);">Azul cadete</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(10)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(85,35,60); background:rgb(139,252,248);">Océano Pacífico</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(11)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(156,83,164); background:rgb(228,232,241);">Crepúsculo</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(12)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(225,218,226);">Cielo otoñal</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(13)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(205,207,194);">Caqui 1</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(14)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(63,84,75); background:rgb(220,206,179);">Caqui 2</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(15)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(250,137,15); background:rgb(244,240,213);">Caqui 3</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(16)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(252,254,233); background:rgb(88,59,51);">Chocolate</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(17)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(205,211,209); background:rgb(216,117,78);">Rooibos</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(18)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(216,117,78);">Rooibos cargado</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(19)"><div style="padding: 1vh 0 1vh 2vw; color:white; background:rgb(216,117,78);">Rooibos azucarado</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(20)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(30,58,79); background:rgb(255,153,43);">Zumo de naranja</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(21)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(22,61,68); background:rgb(242,214,45);">Zumo de limón</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(22)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(53,72,78); background:rgb(232,252,129);">Zumo de manzana</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(23)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(118,254,188);">Verde ácido</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(24)"><div style="padding: 1vh 0 1vh 2vw; color:black; background:rgb(113,195,159);">Verde estanque</div></div></div>
+		<div style="border-bottom: 2px solid grey; width:66%;"><div style=" text-align: left; margin: 2vh 0 2vh 3vw;" onclick="tema(25)"><div style="padding: 1vh 0 1vh 2vw; color:rgb(229,238,243); background:rgb(47,77,69);">Verde bosque</div></div></div>
+	</div>
+
+<script>
+//*********************************  VARIABLES Y EVENTOS ****************************************	
+	var cab=document.getElementById("cabecera");
+
+	var v=[0 , document.getElementById("uno") , document.getElementById("dos") , document.getElementById("tres") , document.getElementById("cuatro"), document.getElementById("cinco"), document.getElementById("seis")];
+
+	var equis=[0, document.getElementById("equis1") , 0, document.getElementById("equis3") , document.getElementById("equis4") , document.getElementById("equis5"), document.getElementById("equis6")];
+
+	//var fra=document.getElementById("sqframe");
+
+	var VentanaActiva=2;
+
+	var fontSize = 1.2;  //para modificar el tamaño de fuente
+
+	var perfil=document.getElementById("izda");
+	var rayas=document.getElementById("dcha");
+	var titulo=document.getElementById("titulo");
+
+	var noche=0;
+	var text_noche=document.getElementById("noche_div");
+
+	var tipo=1;
+
+	var tipos=document.getElementById("tipos");
+
+
+	var id_justi=document.getElementById("id_justi");
+	var justi=1;
+
+	var id_octit=document.getElementById("octit");
+	var octit=1;
+	var tit="Bienvenido a Matris";
+
+	var id_margen=document.getElementById("id_margen");
+	var marg=3;
+
+	sq_final=document.getElementById("final");
+
+	var temaActivo=1;
+
+	window.addEventListener("resize", resizea);  // SI SE RESIZEA LA VENTANA, ESTO MANDA AUTOAJUSTAR LA VENTANA INFERIOR PARA SCROLL BONITO
+
+
+
+//**************PERMITE CAMBIAR ENTRE VENTANAS DE LA CABECERA  *******************************
+function activa(ventana) {
+
+	//1: perfil
+	//2: historia
+	//3: opciones
+	//4: acerca de
+	//5: reiniciar 
+	//6: temas
+
+	v[VentanaActiva].style.display = "none"; //solo puede haber una ventana activa cada vez, así que la deshabilitamos con esto
+
+	v[ventana].style.display = "block"; //y esto activa la ventana que le hemos dicho
+
+	v[ventana].scrollTop = 0; //esto no pone en la parte de arriba de la ventana
+
+	VentanaActiva=ventana;  //marcamos la ventana indicada como activa
+
+	resizea(); //y reajustamos la vista
+
+	if (ventana==2){  //caso especial es la ventana 2, la historia
+	
+		pabajo(); // esto hace que se ponga al final del div en lugar de al ppo
+	}
+	
+	//la ventana activa no precisa cachearse en localstorage, ni el resizea siguiente
+	
+}
+
+//****************PERMITE AUTOAJUSTAR EL TAMAÑO DE LA VENTANA INFERIOR PARA SCROLL BONITO*****
+function resizea() {
+
+	 // AJUSTAMOS EL ALTO DE LA VENTANA PARA SCROLL BONITO; EL -10 ES PARA EVITAR DESPLAZAMIENTOS RAROS AL LLEGAR AL FINAL DEL DIV EN ANDROID VIA PHONEGAP
+	if (VentanaActiva==2) {v[VentanaActiva].style.height=window.innerHeight-cab.offsetHeight;}
+	else{v[VentanaActiva].style.height=window.innerHeight-cab.offsetHeight-10;}
+	//se separa la ventana de historia (2) del resto porque el iframe parece compartarse de forma distinta que el div en medidas
+}
+//*********************LLAMA A REINICIA HISTORIA DEL IFRAME *******************************
+function amonos() {
+
+	v[5].style.display = "none";  // borra la venta de reinicio
+	v[2].style.display = "block"; // activa la venta de historia
+	VentanaActiva=2;  // establece la ventana de historia como activa
+	resizea();  //resizeamos
+	resetea();  //y llamamos a la funcion del iframe que reinicia la historia
+	//location.reload();  //esto fuerza a que recargue la página completa porque sino el iframe da problemas con los temas y las tipografías; como en defecto() se leen los localstorage, todo se carga tal cual lo tenía el usuario de colores, tamaños, etc...
+	
+}
+//************************  CIERRA LA VENTANA ACTIVA  **************************************
+function cierra(){
+
+	v[VentanaActiva].style.display = "none";  // desactiva la ventana actual
+
+	switch(VentanaActiva){  // y en función de donde estuviéramos, nos manda a un sitio u otro
+
+	
+	case 6:  //caso especial, devuelve al menú de opciones en lugar de a la historia
+	activa(3);
+	break;
+
+	default:
+	activa(2); //por defecto nos manda a historia
+
+	}
+
+}
+//********************************  AUMENTAR TAMAÑO FUENTE *******************************************
+
+function zoomIn() {
+	fontSize += 0.1;
+	document.body.style.fontSize = fontSize + "em";
+	//fra.contentWindow.sqZoom(fontSize);
+	localStorage.fi_tamletra=fontSize;  //esto cachea en localstorage el tamaño de letra del usuario
+}
+
+//********************************  DISMINUIR TAMAÑO FUENTE *******************************************
+function zoomOut() {
+	
+	if (fontSize>0.5) {  // para impedir que la letra se haga tan pequeña que desaparezca
+		fontSize -= 0.1;
+		document.body.style.fontSize = fontSize + "em";
+		//fra.contentWindow.sqZoom(fontSize);
+		localStorage.fi_tamletra=fontSize; //esto cachea en localstorage el tamaño de letra del usuario
+	}
+}
+
+//********************************  JUSTIFICADO *******************************************
+function justifica() {
+	
+	if (justi==0){  
+		//fra.contentWindow.sqjusti(1);
+		document.styleSheets[0].cssRules[6].style.textAlign="justify";
+		id_justi.innerHTML="Desactivar justificado";
+		justi=1;
+	}else{
+		//fra.contentWindow.sqjusti(0);
+		document.styleSheets[0].cssRules[6].style.textAlign="left";
+		id_justi.innerHTML="Activar justificado";
+		justi=0;
+	}
+	
+	localStorage.fi_justi=justi;  //esto cachea en localstorage el justificado del usuario
+}
+
+
+//******************************* VALORES POR DEFECTO *****************************************
+function defecto(){
+
+
+	//ponemos el tamaño de la letra original aquí y en el iframe
+	fontSize=1.2;
+	document.body.style.fontSize = fontSize + "em";
+	//fra.contentWindow.sqZoom(1.2);
+	localStorage.fi_tamletra=fontSize;
+
+
+	//ponemos el modo diurno
+	noche=1;
+	nocturno();
+	
+	//ponemos la tipografía sans-serif por defecto
+	tipo=3;
+	tipograf();
+
+	//justificamos
+	justi=0;
+	//fra.contentWindow.sqjusti(1);
+	justifica();
+	localStorage.fi_justi=justi;
+
+	//esto activa el título
+	octit=1;
+	ocultit();
+
+	//ahora el margen
+	marg=2;
+	margen(); 
+
+	//cargamos el tema por defecto
+	tema(1);
+
+
+	//y activamos la ventana 2, la historia
+	activa(2);
+	
+}
+
+//******************************* MODO NOCTURNO ***********************************************
+function nocturno(){
+	if (noche==0){
+		document.body.style.background = "black";
+		document.body.style.color = "rgb(240,245,244)";
+		perfil.style.fill="white";
+		rayas.style.fill="white";
+		equis[1].style.fill="white"; //cada equis hay que ponerla por separad porque el id no se puede repetir y al faltar la 2 tampoco se puede hacer un for
+		equis[3].style.fill="white";
+		equis[4].style.fill="white";
+		equis[5].style.fill="white";
+		equis[6].style.fill="white";
+		cab.style.background="black";
+		text_noche.innerHTML="Desactivar modo nocturno";
+		//fra.contentWindow.sqNoche();
+		document.styleSheets[0].cssRules[1].style.color="yellow";      //para el link normal
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid";  //para la caja del link-caja
+		document.styleSheets[0].cssRules[8].style.color="yellow";             //para el texto del link-caja
+		noche=1;
+	}else {
+		noche=0;
+		tema(temaActivo);
+		text_noche.innerHTML="Activar modo nocturno";
+	}
+
+	localStorage.fi_noche=noche;
+
+}
+
+
+//******************************* TIPOGRAFÍA *****************************************
+function tipograf(){
+
+	switch(tipo){
+	
+	case 1: // si la tipografia es 1 (san serif), la pasamos a 2 (serif)
+	document.body.style.fontFamily="serif";
+	tipos.innerHTML="Tipografía: Serif";
+	tipo=2;
+	//fra.contentWindow.tipograf(2);
+	break;
+
+	case 2: // si la tipografia es 2 (serif), la pasamos a 3 (monospace)
+	document.body.style.fontFamily="monospace";
+	tipos.innerHTML="Tipografía: Monospace";
+	tipo=3;
+	//fra.contentWindow.resetea();
+	//fra.contentWindow.tipograf(3);
+	break;
+
+	case 3: // si la tipografia es 3 (monospace), la pasamos a 1 (san-serif)
+	document.body.style.fontFamily="sans-serif";
+	tipos.innerHTML="Tipografía: San Serif";
+	tipo=1;
+	//fra.contentWindow.tipograf(1);
+	break;
+	}
+
+	localStorage.fi_tipo=tipo;
+}
+
+//********************************  OCULTAR TÍTULO *******************************************
+function ocultit() {
+	
+	if (octit==0){  
+		titulo.innerHTML="&nbsp;";
+		id_octit.innerHTML="Mostrar título";
+		octit=1;
+	}else{
+		titulo.innerHTML=tit;
+		id_octit.innerHTML="Ocultar título";
+		octit=0;
+	}
+
+	localStorage.fi_octit=octit;
+
+
+}
+
+//********************************  OCULTAR TÍTULO *******************************************
+function margen() {
+
+	switch(marg){
+
+	case 0:  //margen 0%
+	marg=1;  			
+	id_margen.innerHTML="Margen: 5%";
+	v[2].style.padding="0 5vw 0 5vw";
+	//document.styleSheets[0].cssRules[4].style.maxWidth="100vw";	
+	break;
+
+	case 1:  //margen 5%
+	marg=2;  			
+	id_margen.innerHTML="Margen: 10%";
+	v[2].style.padding="0 10vw 0 10vw";	
+	break;
+
+	case 2:  //margen 10%
+	marg=3;  			
+	id_margen.innerHTML="Margen: 15%";	
+	v[2].style.padding="0 15vw 0 15vw";
+	break;
+
+	case 3:  //margen 15%
+	marg=4;  			
+	id_margen.innerHTML="Margen: 20%";	
+	v[2].style.padding="0 20vw 0 20vw";
+	break;
+
+	case 4:  //margen 20%
+	marg=5;  		//estaba en 20% al llamarlo así que incrementamos a 25%
+	id_margen.innerHTML="Margen: 25%";	//y cambiamos el rótulo del menú
+	v[2].style.padding="0 25vw 0 25vw";
+	break;
+
+	case 5:  //margen 25%
+	marg=0;  			
+	id_margen.innerHTML="Sin margen";
+	v[2].style.padding="0 0 0 0";	
+	break;
+
+	}
+	
+	//fra.contentWindow.cambiamarg(marg);  //activamos los márgenes que haya establecido el case
+
+	localStorage.fi_marg=marg;
+
+
+}
+
+//********************************  AL ARRANCAR *******************************************
+function arranca() {
+	
+
+	//ahora vemos si hay cacheados datos del usuario y se aplican o se va a los por defecto
+
+   if(localStorage.fi_tema){   //usamos fi_tema porque si existe nunca es 0 (es 1,2 ó 3); si existe ejecuta el bloque de lectura de localstorage y si no existe ejecutas el por defecto
+
+
+	//ocultar título
+	octit=parseInt(localStorage.fi_octit);  //cargamos el octit de localstorage como entero
+	octit=octit-1;   // le restamos 1 porque al pasarlo a la función lo que hará es cambiarlo, así que le pasamos el contrario para que lo ponga como estaba al cambiarlo
+	if (octit==-1) {octit=1;}  //bucle de 2 (0,1), así que si queda -1, se cicla al 1
+	ocultit();
+
+	//activar tema
+	temaActivo=parseInt(localStorage.fi_tema);    
+	tema(temaActivo);
+
+
+	//activa o no modo nocturno, misma filosofía que con octit
+	noche=parseInt(localStorage.fi_noche);
+	noche=noche-1;
+	if (noche==-1) {noche=1;}
+	nocturno();
+
+
+	//activar el tipo de letra; aquí el bucle es de 3 (1,2,3), asíque si es cero, se cicla a 3
+	tipo=parseInt(localStorage.fi_tipo);    
+	tipo=tipo-1;
+	if (tipo==0) {tipo=3};
+	tipograf();
+
+
+	//aplicamos o desactivamos justificado, idem octit
+	justi=parseInt(localStorage.fi_justi);    
+	justi=justi-1;
+	if (justi==-1) {justi=1};
+	justifica();
+
+	//y ahora el margen
+	marg=parseInt(localStorage.fi_marg);    
+	marg=marg-1;
+	if (marg==-1) {marg=5;}
+	margen();
+
+
+	//aplicamos el tamaño de letra que tenía el usuario
+	fontSize=parseFloat(localStorage.fi_tamletra); 	//PROBLEMA, EL . LO CONVIERTE EN TEXTO AL GRABARLO EN LOCALSTORAGE, EL PARSEFLOAT LO DEVUELVE A NUMERO
+	document.body.style.fontSize = fontSize + "em";
+	//fra.contentWindow.sqZoom(fontSize);
+
+
+   }else{
+	
+	defecto();
+
+   }
+	
+
+
+	//estas lineas ponen la cabecera en el aspect ratio optimo, con su padding y todo y se hace se cargie todo de localstorage o vaya por defecto
+	temp=0.04*window.innerHeight;  
+	perfil.style.height=temp+"px";
+	rayas.style.height=temp+"px";
+	titulo.style.fontSize=temp+"px";
+	temp=temp*0.25;
+	titulo.style.paddingBottom=temp+"px";
+
+	//cargue lo que cargue, al final activa la ventana de historia
+	activa(2);
+
+}
+
+//********************************  TEMA ***************************************************
+function tema(temai) {
+	
+	if (noche==0){
+		
+		switch(temai){
+
+		case 1:
+		document.body.style.background="rgb(240,245,244)";  //cambia el fondo general
+		document.body.style.color="black";                  //cambia el color de letra
+		cab.style.background="rgb(235,235,235)";	    //cambia la cabecera
+		perfil.style.fill="black";			    //cambia losa iconos
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);		    //cambia el tema del iframe
+		document.styleSheets[0].cssRules[1].style.color="blue";             //esto cambia el color de un link normal
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid";  //esto cambia el color de la caja del link tipo caja (clase "nueva")
+		document.styleSheets[0].cssRules[8].style.color="blue";             //esto cambia el color del texto del link tipo caja (clase "nueva")
+		break;		
+
+		case 2:
+		document.body.style.background="white";  
+		document.body.style.color="black";                  
+		cab.style.background="white";	   
+		perfil.style.fill="black";	    
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue";		    
+		break;
+
+		case 3:
+		document.body.style.background="rgb(213,183,139)";  
+		document.body.style.color="black";                  
+		cab.style.background="rgb(203,173,129)";	   
+		perfil.style.fill="black";   
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 	    
+		break;
+
+		case 4:
+		document.body.style.background="rgb(213,183,139)";  
+		document.body.style.color="white";                  
+		cab.style.background="rgb(203,173,129)";	   
+		perfil.style.fill="white";	    
+		rayas.style.fill="white";	    
+		equis[1].style.fill="white";	    
+		equis[3].style.fill="white";	    
+		equis[4].style.fill="white";	    
+		equis[5].style.fill="white";	    
+		equis[6].style.fill="white";	    
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 	    
+		break;
+		
+		case 5:
+		document.body.style.background="rgb(117,62,93)";  
+		document.body.style.color="rgb(248,249,251)";                  
+		cab.style.background="rgb(102,47,78)";	   
+		perfil.style.fill="rgb(248,249,251)";    		    
+		rayas.style.fill="rgb(248,249,251)";   
+		equis[1].style.fill="rgb(248,249,251)";   
+		equis[3].style.fill="rgb(248,249,251)";   
+		equis[4].style.fill="rgb(248,249,251)";   
+		equis[5].style.fill="rgb(248,249,251)";   
+		equis[6].style.fill="rgb(248,249,251)";   
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 	    
+		break;
+
+		case 6:
+		document.body.style.background="rgb(137,48,138)";  
+		document.body.style.color="rgb(243,242,238)";                  
+		cab.style.background="rgb(122,33,123)";	   
+		perfil.style.fill="rgb(243,242,238)";       		    
+		rayas.style.fill="rgb(243,242,238)";    
+		equis[1].style.fill="rgb(243,242,238)";    
+		equis[3].style.fill="rgb(243,242,238)";    
+		equis[4].style.fill="rgb(243,242,238)";    
+		equis[5].style.fill="rgb(243,242,238)";    
+		equis[6].style.fill="rgb(243,242,238)";    
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 	    
+		break;
+
+		case 7:
+		document.body.style.background="rgb(136,104,153)";  
+		document.body.style.color="rgb(248,242,216)";                  
+		cab.style.background="rgb(121,89,138)";	   
+		perfil.style.fill="rgb(248,242,216)";		    
+		rayas.style.fill="rgb(248,242,216)";
+		equis[1].style.fill="rgb(248,242,216)";
+		equis[3].style.fill="rgb(248,242,216)";
+		equis[4].style.fill="rgb(248,242,216)";
+		equis[5].style.fill="rgb(248,242,216)";
+		equis[6].style.fill="rgb(248,242,216)";
+		//fra.contentWindow.sqtema(temai);		
+		document.styleSheets[0].cssRules[1].style.color="yellow";		
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow";     
+		break;
+
+		case 8:
+		document.body.style.background="rgb(54,73,80)";  
+		document.body.style.color="rgb(255,161,48)";                  
+		cab.style.background="rgb(39,58,65)";	   
+		perfil.style.fill="rgb(255,161,48)";		    
+		rayas.style.fill="rgb(255,161,48)";
+		equis[1].style.fill="rgb(255,161,48)";
+		equis[3].style.fill="rgb(255,161,48)";
+		equis[4].style.fill="rgb(255,161,48)";
+		equis[5].style.fill="rgb(255,161,48)";
+		equis[6].style.fill="rgb(255,161,48)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="white";
+		document.styleSheets[0].cssRules[8].style.border="3px white solid"; 
+		document.styleSheets[0].cssRules[8].style.color="white"; 	    
+		break;
+
+		case 9:
+		document.body.style.background="rgb(107,154,170)";  
+		document.body.style.color="rgb(227,248,127)";                  
+		cab.style.background="rgb(92,139,155)";	   
+		perfil.style.fill="rgb(227,248,127)";		    
+		rayas.style.fill="rgb(227,248,127)";
+		equis[1].style.fill="rgb(227,248,127)";
+		equis[3].style.fill="rgb(227,248,127)";
+		equis[4].style.fill="rgb(227,248,127)";
+		equis[5].style.fill="rgb(227,248,127)";
+		equis[6].style.fill="rgb(227,248,127)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="white";
+		document.styleSheets[0].cssRules[8].style.border="3px white solid"; 
+		document.styleSheets[0].cssRules[8].style.color="white"; 	    
+		break;
+
+		case 10:
+		document.body.style.background="rgb(139,252,248)";  
+		document.body.style.color="rgb(85,35,60)";                  
+		cab.style.background="rgb(124,237,233)";	   
+		perfil.style.fill="rgb(85,35,60)";		    
+		rayas.style.fill="rgb(85,35,60)";
+		equis[1].style.fill="rgb(85,35,60)";
+		equis[3].style.fill="rgb(85,35,60)";
+		equis[4].style.fill="rgb(85,35,60)";
+		equis[5].style.fill="rgb(85,35,60)";
+		equis[6].style.fill="rgb(85,35,60)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 	    
+		break;
+
+		case 11:
+		document.body.style.background="rgb(228,232,241)";  
+		document.body.style.color="rgb(156,83,164)";                  
+		cab.style.background="rgb(213,217,226)";	   
+		perfil.style.fill="rgb(156,83,164)"; 			    
+		rayas.style.fill="rgb(156,83,164)";
+		equis[1].style.fill="rgb(156,83,164)";
+		equis[3].style.fill="rgb(156,83,164)";
+		equis[4].style.fill="rgb(156,83,164)";
+		equis[5].style.fill="rgb(156,83,164)";
+		equis[6].style.fill="rgb(156,83,164)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="green";
+		document.styleSheets[0].cssRules[8].style.border="3px green solid"; 
+		document.styleSheets[0].cssRules[8].style.color="green"; 	    
+		break;
+
+		case 12:
+		document.body.style.background="rgb(225,218,226)";  
+		document.body.style.color="black";                  
+		cab.style.background="rgb(210,203,211)";	   
+		perfil.style.fill="black";   			    
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 	    
+		break;
+
+		case 13:
+		document.body.style.background="rgb(205,207,194)";  
+		document.body.style.color="black";                  
+		cab.style.background="rgb(190,192,179)";	   
+		perfil.style.fill="black";			    
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 	    
+		break;
+
+		case 14:
+		document.body.style.background="rgb(220,206,179)";  
+		document.body.style.color="rgb(63,84,75)";                  
+		cab.style.background="rgb(205,191,164)";	   
+		perfil.style.fill="rgb(63,84,75)";			    
+		rayas.style.fill="rgb(63,84,75)";
+		equis[1].style.fill="rgb(63,84,75)";
+		equis[3].style.fill="rgb(63,84,75)";
+		equis[4].style.fill="rgb(63,84,75)";
+		equis[5].style.fill="rgb(63,84,75)";
+		equis[6].style.fill="rgb(63,84,75)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="brown";
+		document.styleSheets[0].cssRules[8].style.border="3px brown solid"; 
+		document.styleSheets[0].cssRules[8].style.color="brown"; 	    
+		break;
+
+		case 15:
+		document.body.style.background="rgb(244,240,213)";  
+		document.body.style.color="rgb(250,137,15)";                  
+		cab.style.background="rgb(229,225,198)";	   
+		perfil.style.fill="rgb(250,137,15)";			    
+		rayas.style.fill="rgb(250,137,15)";
+		equis[1].style.fill="rgb(250,137,15)";
+		equis[3].style.fill="rgb(250,137,15)";
+		equis[4].style.fill="rgb(250,137,15)";
+		equis[5].style.fill="rgb(250,137,15)";
+		equis[6].style.fill="rgb(250,137,15)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="black";
+		document.styleSheets[0].cssRules[8].style.border="3px black solid"; 
+		document.styleSheets[0].cssRules[8].style.color="black"; 	    
+		break;
+
+		case 16:
+		document.body.style.background="rgb(88,59,51)";  
+		document.body.style.color="rgb(252,254,233)";                  
+		cab.style.background="rgb(73,44,36)";	   
+		perfil.style.fill="rgb(252,254,233)";     			    
+		rayas.style.fill="rgb(252,254,233)";
+		equis[1].style.fill="rgb(252,254,233)";
+		equis[3].style.fill="rgb(252,254,233)";
+		equis[4].style.fill="rgb(252,254,233)";
+		equis[5].style.fill="rgb(252,254,233)";
+		equis[6].style.fill="rgb(252,254,233)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 	    
+		break;
+
+		case 17:
+		document.body.style.background="rgb(216,117,78)";  
+		document.body.style.color="rgb(205,211,209)";                  
+		cab.style.background="rgb(201,102,63)";	   
+		perfil.style.fill="rgb(205,211,209)"; 			    
+		rayas.style.fill="rgb(205,211,209)"; 
+		equis[1].style.fill="rgb(205,211,209)"; 
+		equis[3].style.fill="rgb(205,211,209)"; 
+		equis[4].style.fill="rgb(205,211,209)"; 
+		equis[5].style.fill="rgb(205,211,209)"; 
+		equis[6].style.fill="rgb(205,211,209)"; 
+		//fra.contentWindow.sqtema(temai);		
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue";     
+		break;
+
+		case 18:
+		document.body.style.background="rgb(216,117,78)";  
+		document.body.style.color="black";                  
+		cab.style.background="rgb(201,102,63)";	   
+		perfil.style.fill="black";  		    
+		rayas.style.fill="black";  
+		equis[1].style.fill="black";  
+		equis[3].style.fill="black";  
+		equis[4].style.fill="black";  
+		equis[5].style.fill="black";  
+		equis[6].style.fill="black";  
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue";	    
+		break;
+
+		case 19:
+		document.body.style.background="rgb(216,117,78)";  
+		document.body.style.color="white";                  
+		cab.style.background="rgb(201,102,63)";	   
+		perfil.style.fill="white";  		    
+		rayas.style.fill="white";  
+		equis[1].style.fill="white";  
+		equis[3].style.fill="white";  
+		equis[4].style.fill="white";  
+		equis[5].style.fill="white";  
+		equis[6].style.fill="white";  
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 	    
+		break;
+
+		case 20:
+		document.body.style.background="rgb(255,153,43)";  
+		document.body.style.color="rgb(30,58,79)";                  
+		cab.style.background="rgb(240,138,28)";	   
+		perfil.style.fill="rgb(30,58,79)";			    
+		rayas.style.fill="rgb(30,58,79)";
+		equis[1].style.fill="rgb(30,58,79)";
+		equis[3].style.fill="rgb(30,58,79)";
+		equis[4].style.fill="rgb(30,58,79)";
+		equis[5].style.fill="rgb(30,58,79)";
+		equis[6].style.fill="rgb(30,58,79)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="white";
+		document.styleSheets[0].cssRules[8].style.border="3px white solid"; 
+		document.styleSheets[0].cssRules[8].style.color="white"; 	    
+		break;
+
+		case 21:
+		document.body.style.background="rgb(242,214,45)";  
+		document.body.style.color="rgb(22,61,68)";                  
+		cab.style.background="rgb(227,199,30)";	   
+		perfil.style.fill="rgb(22,61,68)";		    
+		rayas.style.fill="rgb(22,61,68)";
+		equis[1].style.fill="rgb(22,61,68)";
+		equis[3].style.fill="rgb(22,61,68)";
+		equis[4].style.fill="rgb(22,61,68)";
+		equis[5].style.fill="rgb(22,61,68)";
+		equis[6].style.fill="rgb(22,61,68)";
+		//fra.contentWindow.sqtema(temai);
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 		    
+		break;
+
+		case 22:
+		document.body.style.background="rgb(232,252,129)";  
+		document.body.style.color="rgb(53,72,78)";                  
+		cab.style.background="rgb(217,237,114)";	   
+		perfil.style.fill="rgb(53,72,78)";		    
+		rayas.style.fill="rgb(53,72,78)";
+		equis[1].style.fill="rgb(53,72,78)";
+		equis[3].style.fill="rgb(53,72,78)";
+		equis[4].style.fill="rgb(53,72,78)";
+		equis[5].style.fill="rgb(53,72,78)";
+		equis[6].style.fill="rgb(53,72,78)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 	    
+		break;
+
+		case 23:
+		document.body.style.background="rgb(118,254,188)";  
+		document.body.style.color="black";                  
+		cab.style.background="rgb(103,239,173)";	   
+		perfil.style.fill="black";			    
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 	    
+		break;
+
+		case 24:
+		document.body.style.background="rgb(113,195,159)";  
+		document.body.style.color="black";                  
+		cab.style.background="rgb(98,180,144)";	   
+		perfil.style.fill="black";		    
+		rayas.style.fill="black";
+		equis[1].style.fill="black";
+		equis[3].style.fill="black";
+		equis[4].style.fill="black";
+		equis[5].style.fill="black";
+		equis[6].style.fill="black";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="blue";
+		document.styleSheets[0].cssRules[8].style.border="3px blue solid"; 
+		document.styleSheets[0].cssRules[8].style.color="blue"; 	    
+		break;
+
+		case 25:
+		document.body.style.background="rgb(47,77,69)";  
+		document.body.style.color="rgb(229,238,243)";                  
+		cab.style.background="rgb(32,62,54)";	   
+		perfil.style.fill="rgb(229,238,243)";			    
+		rayas.style.fill="rgb(229,238,243)";
+		equis[1].style.fill="rgb(229,238,243)";
+		equis[3].style.fill="rgb(229,238,243)";
+		equis[4].style.fill="rgb(229,238,243)";
+		equis[5].style.fill="rgb(229,238,243)";
+		equis[6].style.fill="rgb(229,238,243)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 	    
+		break;
+
+		case 26:
+		document.body.style.background="black";  
+		document.body.style.color="rgb(66,201,32)";                  
+		cab.style.background="black";	   
+		perfil.style.fill="rgb(66,201,32)";			    
+		rayas.style.fill="rgb(66,201,32)";
+		equis[1].style.fill="rgb(66,201,32)";
+		equis[3].style.fill="rgb(66,201,32)";
+		equis[4].style.fill="rgb(66,201,32)";
+		equis[5].style.fill="rgb(66,201,32)";
+		equis[6].style.fill="rgb(66,201,32)";
+		//fra.contentWindow.sqtema(temai);	
+		document.styleSheets[0].cssRules[1].style.color="yellow";
+		document.styleSheets[0].cssRules[8].style.border="3px yellow solid"; 
+		document.styleSheets[0].cssRules[8].style.color="yellow"; 	    
+		break;
+
+		}
+
+
+		temaActivo=temai;				    //fuera cual fuera, le decimos que el nuevo tema activo es temai
+	}else{
+		temaActivo=temai;				    //no cambiamos nada porque es modo nocturno, pero dejamos reflajado cual es el tema activo
+	}
+
+	//alert(temaActivo);
+	localStorage.fi_tema=temaActivo;
+	//alert(localStorage.fi_tema);
+
+}
+//************************************ IR A LA ZONA DE ABAJO DE LA HISTORIA ****************
+function pabajo(){
+	sq_final.scrollIntoView();
+}
+//************************************ REINICIAMOS ****************
+function resetea(){
+	$('#squiffy').squiffy('restart');
+}
+
+
+
+</script>
+
+</BODY>
+
+</HTML>
